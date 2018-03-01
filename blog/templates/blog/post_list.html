@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ "Abdoulthegreat" }}</title>
+</head>
+<body>
+<div>
+	{% for posts in posts %}
+	<fieldset>
+		<legend>{{ posts.title }}</legend>
+		<time>{{ posts.published_date }}</time><br><hr>
+		<article>{{ posts.content|linebreaksbr }}</article>
+	</fieldset>
+	{% endfor %}
+</div>
+</body>
+</html>
