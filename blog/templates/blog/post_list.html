@@ -5,13 +5,19 @@
 </head>
 <body>
 <div>
+	{% if posts %}
 	{% for posts in posts %}
 	<fieldset>
-		<legend>{{ posts.title }}</legend>
+		<legend><strong>{{ posts.title }}</strong></legend>
 		<time>{{ posts.published_date }}</time><br><hr>
 		<article>{{ posts.content|linebreaksbr }}</article>
 	</fieldset>
 	{% endfor %}
+	{% else %}
+	<fieldset>
+		{{ "No Posts are available" }}
+	</fieldset>
+	{% endif %}
 </div>
 </body>
 </html>
