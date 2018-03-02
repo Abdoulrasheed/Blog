@@ -19,3 +19,9 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+
+class FeedBack(models.Model):
+	name = models.CharField(max_length=50)
+	email = models.EmailField()
+	phone = models.PositiveIntegerField()
+	content = models.TextField()

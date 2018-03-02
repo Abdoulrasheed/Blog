@@ -9,8 +9,8 @@
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h1>{{ Abdulthegreat }}</h1>
-              <span class="subheading">{{ Welcome }}</span>
+              <h1> Abdulthegreat </h1>
+              <span class="subheading"> Welcome </span>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
           <div class="post-preview">
             <a href="#">
               <h2 class="post-title">
-                {{ posts.title }}
+                <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
               </h2>
               <h3 class="post-subtitle">
                {{ posts.content|linebreaksbr }}
