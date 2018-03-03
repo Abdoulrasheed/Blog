@@ -24,13 +24,14 @@
           <div class="post-preview">
             <a href="#">
               <h2 class="post-title">
-                <a href="#">{{ post.title }}</a>
+               <a href="{%  url 'post_detail' pk=posts.pk  %}">{{ posts.title }}
               </h2>
               <h3 class="post-subtitle">
-               {{ posts.content|linebreaksbr }}
+               {{ posts.content|linebreaksbr|truncatewords:30 }}
               </h3>
+              </a>
             </a>
-            <p class="post-meta">Posted by
+            <p class="post-meta">Published by
               <a href="#">{{ posts.author }}</a>
               {{ posts.published_date }}</p>
           </div>
