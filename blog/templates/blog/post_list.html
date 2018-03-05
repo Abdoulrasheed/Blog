@@ -1,6 +1,6 @@
     {% extends 'blog/base.html' %}
     {% load staticfiles %}
-    {% block title %} Articles {% endblock %}
+    {% block title %} Abdoulthegreat {% endblock %}
     {% block content %}
     <!-- Page Header -->
     <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
@@ -10,7 +10,11 @@
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
               <h1> Abdulthegreat </h1>
+              {% if user.is_authenticated %}
+              <span class="subheading"> Welcome {{ user.username }} <small><a href="{% url 'logout' %}">  Log out</a></small></span>
+              {% else %}
               <span class="subheading"> Welcome </span>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -31,9 +35,10 @@
               </h3>
               </a>
             </a>
-            <p class="post-meta">Published by
-              <a href="#">{{ posts.author }}</a>
-              {{ posts.published_date }}</p>
+            <p class="post-meta">Published by<a href="#"><span class="glyphicon glyphicon-user"></span></a>
+              <a href="#">{{ posts.author }}  </a>
+             <span class="glyphicon glyphicon-calendar"></span> {{ posts.published_date }}
+             <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{ post.approved_comments.count }}</a>
           </div>
           <hr>
         </div>

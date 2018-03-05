@@ -1,0 +1,40 @@
+    {% extends 'blog/base.html' %}
+    {% load staticfiles %}
+    {% block title %} Articles {% endblock %}
+    {% block content %}
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('{% static 'img/home-bg.jpg' %}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1> Abdulthegreat </h1>
+              <span class="subheading"> {{ "You are viewing" }} <strong> {{ post.title }} </strong></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+       
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-preview">
+              <h2 class="post-title">
+              	    {% for post in posts %}
+				<a style="color: blue" href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+              	</h2><br>
+       			<h3>
+       				{{ post.content|truncatechars:200|linebreaksbr }}
+       			</h3>
+            	  <p class="post-meta">Created by <span class="glyphicon glyphicon-user"></span>
+            	  	{{ post.author }}
+            	  	{{ post.created_date|date:'d-m-Y' }} <i>Not Published</i>
+    				{% endfor %}
+          <hr>
+        </div>
+      </div>
+    </div>
+{% endblock %}
