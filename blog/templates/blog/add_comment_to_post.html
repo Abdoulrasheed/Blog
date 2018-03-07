@@ -1,9 +1,49 @@
 {% extends 'blog/base.html' %}
-
+{% block title %} Comments {% endblock %}
+{% load staticfiles %}
 {% block content %}
-    <h1>New comment</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Send</button>
-    </form>
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url(' {% static 'img/home-bg.jpg' %}')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="page-heading">
+              <span class="subheading">comment on </span>
+              <h3>{{ post.title }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        	    <h1>New comment</h1>
+        	{% if form.errors %}
+        	<p style="color: red;">
+            Please correct the error {{ form.errors|pluralize }} below.
+        	</p>
+        	{% endif %}
+    		<form method="POST" class="post-form">{% csrf_token %}
+            <div class="control-group">
+            	{{ form.author.errors }}
+                <label for="name">Name</label><br>
+                {{ form.author}}
+                <p class="help-block text-danger"></p>
+            </div>
+            <div class="control-group">
+            	{{ form.text.errors }}
+                <label for="text">Text</label><br>
+                {{ form.text}}
+                <p class="help-block text-danger"></p>
+            </div>
+       		<button type="submit" class="save btn btn-default">Post</button>
+    		</form>
+    		<br>
+          </div>
+        </div>
+      </div>
+    <hr>
 {% endblock %}

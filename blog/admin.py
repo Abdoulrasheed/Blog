@@ -10,5 +10,9 @@ class AuthorAdmin(admin.ModelAdmin):
 	search_fields = ('title','author','content')
 
 
+class HandleComment(admin.ModelAdmin):
+	list_display = ('post','author','created_date','approved_comment')
+	search_fields = ('post','author')
+
 admin.site.register(Post, AuthorAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, HandleComment)
