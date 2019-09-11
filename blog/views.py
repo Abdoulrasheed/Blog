@@ -7,7 +7,6 @@ from .models import Post, Comment
 from .forms	import	PostForm, CommentForm
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import logout
 
 
 def post_list(request):
